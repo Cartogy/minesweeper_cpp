@@ -57,9 +57,9 @@ void Grid::print_grid() {
 }
 
 bool Grid::out_of_bounds(int p_x, int p_y) {
-	if (p_x >= rows || p_x < rows) {
+	if (p_x >= rows || p_x < 0) {
 		return true;
-	} else if (p_y >= cols || p_y < cols) {
+	} else if (p_y >= cols || p_y < 0) {
 		return true;
 	} else {
 		return false;

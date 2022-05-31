@@ -20,7 +20,6 @@ void MineSweeper::select_cell(int x, int y, actions a) {
 	switch (a) {
 		case actions::CELL_SELECT:
 			if (grid.is_bomb(x, y)) {
-				std::cout << "BOMB" << std::endl;
 				// Bomb!!
 				current_state = game_state::GAME_OVER;
 				mine_map.change_cell_state(x, y, CellState::cell_states::Bomb );
@@ -29,7 +28,6 @@ void MineSweeper::select_cell(int x, int y, actions a) {
 				int bombs = nearby_bombs(x, y);
 				mine_map.change_cell_state(x, y, CellState::cell_states::Value, bombs );
 
-				std::cout << "Not a Bomb" << std::endl;
 			}
 			break;
 		case actions::CLEAR:
@@ -67,10 +65,10 @@ int MineSweeper::nearby_bombs(int x, int y) {
 
 		if (grid.out_of_bounds(next_x, next_y) == false) {
 			bombs = grid.is_bomb(next_x, next_y) ? (1 + bombs) : bombs;
-		}
+		} 
 	}
 
-	return 0;
+	return bombs;
 }
 
 void MineSweeper::print_mine_view() {
@@ -88,4 +86,8 @@ int MineSweeper::get_rows() {
 
 int MineSweeper::get_cols() {
 	return cols;	
+}
+
+void MineSweeper::show_bombs() {
+	grid.print_grid();
 }

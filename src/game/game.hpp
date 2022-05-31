@@ -40,6 +40,7 @@ public:
 	game_state get_state();
 	bool is_game_over();
 	void print_mine_view();
+	void show_bombs();
 
 	int get_rows();
 	int get_cols();

@@ -105,11 +105,13 @@ void CLI::show_board() {
 					break;
 				case CellState::cell_states::Value:
 					int val = c.get_value();
-					std::cout << "CALUE" << val;
+					std::cout << val ;
 					break;
 			}
 		}
 		std::cout << std::endl;
 	}
+
+	//game.show_bombs();
 
 }
