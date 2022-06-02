@@ -21,7 +21,7 @@ void MineSweeper::select_cell(int x, int y, actions a) {
 		case actions::CELL_SELECT:
 			if (grid.is_bomb(x, y)) {
 				// Bomb!!
-				current_state = game_state::GAME_OVER;
+				current_state = game_state::LOST;
 				mine_map.change_cell_state(x, y, CellState::cell_states::Bomb );
 			} else {
 				// Show value of bombs around, if any.	
@@ -45,8 +45,11 @@ void MineSweeper::select_cell(int x, int y, actions a) {
 }
 
 bool MineSweeper::is_game_over() {
-	return current_state == game_state::GAME_OVER;
+	bool game_over = current_state == game_state::GAME_OVER || current_state == game_state::PLAYING || current_state == game_state::LOST;
+
+	return game_over;
 }
+
 
 bool MineSweeper::is_bomb(int x, int y) {
 	return grid.is_bomb(x, y);
@@ -90,4 +93,12 @@ int MineSweeper::get_cols() {
 
 void MineSweeper::show_bombs() {
 	grid.print_grid();
+}
+
+bool MineSweeper::lost() {
+	return current_state == game_state::LOST;
+}
+
+bool MineSweeper::won() {
+	return current_state == game_state::WON;
 }

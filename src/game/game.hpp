@@ -14,7 +14,7 @@ private:
 	};
 
 	// state of the game
-	enum game_state {MENU, PLAYING, GAME_OVER};
+	enum game_state {MENU, PLAYING, WON, LOST, GAME_OVER};
 	game_state current_state;
 
 	// Main components that it interacts with
@@ -44,4 +44,6 @@ public:
 
 	int get_rows();
 	int get_cols();
+	bool lost();
+	bool won();
 };
