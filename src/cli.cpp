@@ -9,9 +9,7 @@ const std::map<std::string, MineSweeper::actions> CLI::commands_actions = {
 	{"clear",MineSweeper::actions::QUESTION}
 };
 
-CLI::CLI(int x, int y, int max_bombs) : game(x, y, max_bombs){
-
-}
+CLI::CLI(int x, int y, int max_bombs) : game(x, y, max_bombs){ }
 
 void CLI::run() {
 	std::string command;
@@ -114,4 +112,69 @@ void CLI::show_board() {
 
 	//game.show_bombs();
 
+}
+
+void cliRun(){
+	int rows;
+	int cols;
+	int opt;
+
+	print("Choose Grid Layout ");
+	print("  1. 4x4");
+	print("  2. 8x8");
+	print("  3. 12x12");
+	print("  4. 16x16");
+	print("  5. Coustom");
+	print("  ");
+	print("  6. EXIT");
+
+	std::cout << "  -- ";
+	std::cin >> opt;
+
+	switch (opt)
+	{
+	case 1:
+		rows = 4;
+		cols = 4;
+		break;
+	case 2:
+		rows = 8;
+		cols = 8;
+		break;
+	case 3:
+		rows = 12;
+		cols = 12;
+		break;
+	case 4:
+		rows = 16;
+		cols = 16;
+		break;
+	case 5:
+		print(" ");
+		std::cout << "Enter Number Of Rows:- ";
+		std::cin>>rows;
+		std::cout << "Enter NUmber Of Columns;- ";
+		std::cin>>cols;
+
+		if(rows <= 3) {rows = 4;}
+		if(cols <= 3) {cols = 4;}
+		if(rows >= 65) {rows = 64;}
+		if(cols >= 65) {cols = 64;}
+		
+		break;
+	case 6:
+		print("GoodBye!");
+		std::system("exit");
+	
+	default:
+		rows = 8;
+		cols = 8;
+		break;
+	}
+
+	std::cin.ignore();
+	std::system("clear");
+
+	CLI minesweeper_cli(rows,cols,int(rows*cols*0.23)); // 23% of all places will be occupied by mines
+	minesweeper_cli.run();
 }
