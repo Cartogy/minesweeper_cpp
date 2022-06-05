@@ -2,6 +2,8 @@
 #include <functional>
 #include <map>
 
+#define print(x) std::cout << x << std::endl
+
 class CLI {
 
 private:
@@ -18,3 +20,5 @@ public:
 	void run();
 	void show_board();
 };
+
+void cliRun();
