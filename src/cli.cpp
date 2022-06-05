@@ -29,7 +29,12 @@ void CLI::run() {
 		} else {
 			std::cout << "Invalid Input. Please enter again" << std::endl;
 		}
+	}
 
+	if (game.lost()) {
+		std::cout << "You lost" << std::endl;
+	} else if (game.won()) {
+		std::cout << "You won" << std::endl;
 	}
 }
 
